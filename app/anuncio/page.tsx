@@ -4,15 +4,13 @@ import VehicleTitle from "../../components/Title/VehicleTitle"
 
 import prisma from "../../lib/prisma"
 
-async function fetchVehicle() {
-  const res = await fetch(
-    "subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello"
-  )
-  return res.json()
-}
-
 export default async function Anuncio() {
-  const vehicle = await fetchVehicle()
+  const vehicle = await fetch(
+    "http://subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello",
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json())
 
   return (
     <div>
