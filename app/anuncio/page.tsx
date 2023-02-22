@@ -1,5 +1,3 @@
-"use client"
-
 import { use } from "react"
 import VehicleImages from "../../components/Gallery/VehicleImages"
 import VehicleTitle from "../../components/Title/VehicleTitle"
@@ -13,10 +11,8 @@ async function fetchVehicle() {
   return res.json()
 }
 
-const dataPromise = fetchVehicle()
-
-export default function Anuncio() {
-  const vehicle = use(dataPromise)
+export default async function Anuncio() {
+  const vehicle = await fetchVehicle()
 
   return (
     <div>
