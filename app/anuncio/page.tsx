@@ -1,14 +1,23 @@
+"use client"
+
+import { use } from "react"
 import VehicleImages from "../../components/Gallery/VehicleImages"
 import VehicleTitle from "../../components/Title/VehicleTitle"
 
 import prisma from "../../lib/prisma"
 
-export default async function Anuncio() {
-  const vehicle = await fetch("http://localhost:3000/api/hello", {
-    cache: "no-store",
-  }).then((res) => res.json())
+async function fetchVehicle() {
+  const res = await fetch(
+    "https://subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello"
+  )
+  return res.json()
+}
 
-  console.log(vehicle)
+const dataPromise = fetchVehicle()
+
+export default function Anuncio() {
+  const vehicle = use(dataPromise)
+
   return (
     <div>
       <VehicleTitle title={`${vehicle?.make} ${vehicle?.model}`} />
