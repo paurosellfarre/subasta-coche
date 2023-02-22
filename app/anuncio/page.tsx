@@ -6,7 +6,7 @@ import prisma from "../../lib/prisma"
 
 async function fetchVehicle() {
   const res = await fetch(
-    "https://subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello"
+    "subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello"
   )
   return res.json()
 }
