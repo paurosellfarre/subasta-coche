@@ -1,0 +1,42 @@
+{
+  "description": "This is a description",
+  "make": "Toyota",
+  "model": "Corolla",
+  "year": 2010,
+  "kilometers": 100000,
+  "color": "Red",
+  "auctions": [
+    {
+      "auctionDate": "2020-01-01",
+      "auctionTime": "10:00",
+      "auctionLocation": "Toronto",
+      "auctionPrice": 10000
+    }
+  ],
+  "images": [
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-01.jpg",
+      "alt": "This is an image1"
+    },
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg",
+      "alt": "This is an image2"
+    },
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg",
+      "alt": "This is an image3"
+    },
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg",
+      "alt": "This is an image4"
+    },
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg",
+      "alt": "This is an image5"
+    },
+    {
+      "image": "https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg",
+      "alt": "This is an image6"
+    }
+  ]
+}
