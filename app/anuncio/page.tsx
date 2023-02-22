@@ -1,16 +1,22 @@
-import { use } from "react"
 import VehicleImages from "../../components/Gallery/VehicleImages"
 import VehicleTitle from "../../components/Title/VehicleTitle"
 
-import prisma from "../../lib/prisma"
-
-export default async function Anuncio() {
+async function fetchVehicle() {
   const vehicle = await fetch(
     "http://subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello",
     {
       cache: "no-store",
     }
-  ).then((res) => res.json())
+  )
+  return vehicle.json()
+}
+
+export default async function Anuncio() {
+  const vehicleData = fetchVehicle()
+
+  const vehicle = await vehicleData
+
+  console.log(vehicle)
 
   return (
     <div>
