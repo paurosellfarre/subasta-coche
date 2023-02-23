@@ -2,21 +2,14 @@ import VehicleImages from "../../components/Gallery/VehicleImages"
 import VehicleTitle from "../../components/Title/VehicleTitle"
 
 async function fetchVehicle() {
-  const vehicle = await fetch(
-    "http://subasta-coche-git-testbuild-paurosellfarre.vercel.app/api/hello",
-    {
-      cache: "no-store",
-    }
-  )
+  const vehicle = await fetch(process.env.PUBLIC_URL + "/api/hello", {
+    cache: "no-store",
+  })
   return vehicle.json()
 }
 
 export default async function Anuncio() {
-  const vehicleData = fetchVehicle()
-
-  const vehicle = await vehicleData
-
-  console.log(vehicle)
+  const vehicle = await fetchVehicle()
 
   return (
     <div>
