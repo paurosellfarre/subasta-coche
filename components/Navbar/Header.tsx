@@ -1,5 +1,9 @@
 import Link from "next/link"
 import MobileMenuButton from "./MobileMenuButton"
+import LoginButton from "../Button/LoginButton"
+
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "../../pages/api/auth/[...nextauth]"
 
 const navigation = [
   { name: "Buscador", href: "/anuncio" },
@@ -7,6 +11,8 @@ const navigation = [
 ]
 
 export default function Header() {
+  //const session = await getServerSession(authOptions)
+
   return (
     <nav>
       <div className="sm:pl-4">
@@ -44,6 +50,7 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <LoginButton />
           <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6">
             <div className="bg-black hover:bg-white text-white font-semibold hover:text-black py-3 px-4">
               <a

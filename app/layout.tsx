@@ -1,4 +1,6 @@
 import "./globals.css"
+
+import AuthContext from "./auth/AuthContext"
 import Header from "../components/Navbar/Header"
 
 export default function RootLayout({
@@ -14,8 +16,10 @@ export default function RootLayout({
       */}
       <head />
       <body className="mx-auto max-w-5xl">
-        <Header />
-        {children}
+        <AuthContext>
+          <Header />
+          {children}
+        </AuthContext>
       </body>
     </html>
   )
