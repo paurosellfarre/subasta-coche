@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
+
 import MobileMenuButton from "./MobileMenuButton"
 import LoginButton from "../Button/LoginButton"
 
@@ -22,15 +24,19 @@ export default function Header() {
             <MobileMenuButton navigation={navigation} />
 
             <div className="flex flex-shrink-0 items-center">
-              <img
+              <Image
                 className="block h-8 w-auto lg:hidden"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 alt="Subasta Tu Coche"
+                width={500}
+                height={500}
               />
-              <img
+              <Image
                 className="hidden h-8 w-auto lg:block"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 alt="Subasta Tu Coche"
+                width={500}
+                height={500}
               />
             </div>
             <div className="hidden sm:ml-6 sm:block">
@@ -53,13 +59,14 @@ export default function Header() {
           <LoginButton />
           <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6">
             <div className="bg-black hover:bg-white text-white font-semibold hover:text-black py-3 px-4">
-              <a
-                href="/publicar-vehiculo"
+              <Link
+                key={"Publica tu anuncio"}
+                href="/publicar-anuncio"
                 className="text-xs block"
               >
                 Publica tu anuncio
                 <span className="text-right block">¡es gratis!</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

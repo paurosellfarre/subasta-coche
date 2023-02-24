@@ -1,7 +1,6 @@
 "use client"
 
 import { signIn } from "next-auth/react"
-import "../../app/globals.css"
 import { useSession, signOut } from "next-auth/react"
 
 export default function Component() {
