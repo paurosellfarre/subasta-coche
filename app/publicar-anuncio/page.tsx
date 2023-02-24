@@ -26,7 +26,7 @@ export default function PublicarAnuncio() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setIsFetching(true)
     e.preventDefault()
-    const response = await fetch("/api/automobile/create-ad", {
+    const response = await fetch("/api/automobile", {
       method: "POST",
       body: JSON.stringify(formData),
     })
