@@ -2,7 +2,7 @@ import VehicleImages from "../../components/Gallery/VehicleImages"
 import VehicleTitle from "../../components/Title/VehicleTitle"
 
 async function fetchVehicle() {
-  const vehicle = await fetch(process.env.PUBLIC_URL + "/api/hello", {
+  const vehicle = await fetch(process.env.PUBLIC_URL + "/api/automobile/1", {
     cache: "no-store",
   })
   return vehicle.json()
