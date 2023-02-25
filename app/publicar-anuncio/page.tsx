@@ -1,21 +1,26 @@
 "use client"
 
+import { Prisma } from "@prisma/client"
 import React, { useState } from "react"
-
-interface CarFormData {
-  brand: string
-  model: string
-  year: number
-  color: string
-}
 
 export default function PublicarAnuncio() {
   const [isFetching, setIsFetching] = useState(false)
-  const [formData, setFormData] = useState<CarFormData>({
-    brand: "",
+  const [formData, setFormData] = useState<Prisma.AutomobileCreateInput>({
+    description: "",
+    make: "",
     model: "",
     year: 0,
+    kilometers: 0,
     color: "",
+    autoType: "",
+    fuelType: "",
+    offerType: "",
+    salePrice: 0,
+    user: {
+      connect: {
+        id: 1,
+      },
+    },
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +31,7 @@ export default function PublicarAnuncio() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setIsFetching(true)
     e.preventDefault()
-    const response = await fetch("/api/automobile/create-ad", {
+    await fetch("/api/automobile", {
       method: "POST",
       body: JSON.stringify(formData),
     })
@@ -43,14 +48,14 @@ export default function PublicarAnuncio() {
       <div className="mb-4">
         <label
           className="block text-gray-700 font-bold mb-2"
-          htmlFor="brand"
+          htmlFor="make"
         >
-          Brand:
+          Make:
         </label>
         <input
           type="text"
-          name="brand"
-          value={formData.brand}
+          name="make"
+          value={formData.make}
           onChange={handleChange}
           className="border border-gray-400 p-2 w-full rounded-md"
           placeholder="Enter the car brand"

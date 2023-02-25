@@ -1,23 +1,23 @@
 import AutomobileImages from "../../../components/Gallery/AutomobileImages"
 import AutomobileTitle from "../../../components/Title/AutomobileTitle"
 
-async function fetchVehicle() {
-  const vehicle = await fetch(process.env.PUBLIC_URL + "/api/automobile/1", {
+async function fetchAutomobile() {
+  const automobile = await fetch(process.env.PUBLIC_URL + "/api/automobile/1", {
     cache: "no-store",
   })
-  return vehicle.json()
+  return automobile.json()
 }
 
 export default async function Anuncio() {
-  const vehicle = await fetchVehicle()
+  const automobile = await fetchAutomobile()
 
   return (
     <div>
-      <VehicleTitle title={`${vehicle?.make} ${vehicle?.model}`} />
+      <AutomobileTitle title={`${automobile?.make} ${automobile?.model}`} />
 
       <div className="px-4 pt-8 pb-16 sm:px-6 sm:grid sm:max-w-7xl sm:grid-cols-3 sm:grid-rows-[auto,auto,1fr] sm:gap-x-8 sm:px-8 sm:pt-10 sm:pb-2">
         {/* Images Gallery */}
-        <VehicleImages images={vehicle?.images} />
+        <AutomobileImages images={automobile?.images} />
 
         {/* Auction Clock and Bidder */}
         <div className="mt-4 sm:row-span-3 sm:mt-0">
@@ -32,7 +32,7 @@ export default async function Anuncio() {
           {/* Description and details */}
           <div>
             <div className="space-y-6">
-              <p className="text-base text-gray-900">Vehicle Description</p>
+              <p className="text-base text-gray-900">Automobile Description</p>
             </div>
           </div>
         </div>
