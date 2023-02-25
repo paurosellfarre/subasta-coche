@@ -8,7 +8,8 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../pages/api/auth/[...nextauth]"
 
 const navigation = [
-  { name: "Buscador", href: "/anuncio" },
+  { name: "Inicio", href: "/" },
+  { name: "Buscador", href: "/anuncio/1" },
   { name: "Soporte", href: "/contacto" },
 ]
 

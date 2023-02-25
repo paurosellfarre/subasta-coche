@@ -1,5 +1,5 @@
-import VehicleImages from "../../components/Gallery/VehicleImages"
-import VehicleTitle from "../../components/Title/VehicleTitle"
+import AutomobileImages from "../../../components/Gallery/AutomobileImages"
+import AutomobileTitle from "../../../components/Title/AutomobileTitle"
 
 async function fetchVehicle() {
   const vehicle = await fetch(process.env.PUBLIC_URL + "/api/automobile/1", {
