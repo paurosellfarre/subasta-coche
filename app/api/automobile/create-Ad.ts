@@ -1,28 +1,23 @@
-import prisma from "../../../lib/prisma"
+import prisma from "@utils/prisma"
+import { Prisma } from "@prisma/client"
 
-interface VehicleData {
-  description: string
-  make: string
-  model: string
-  year: number
-  kilometers: number
-  color: string
-  auctions: {}
-  images: {}
-}
-
-export default async function handler(vehicleData: VehicleData) {
+export default async function handler(
+  automobileData: Prisma.AutomobileCreateInput
+) {
   try {
-    const result = await prisma.vehicle.create({
+    const result = await prisma.automobile.create({
       data: {
-        description: vehicleData.description,
-        make: vehicleData.make,
-        model: vehicleData.model,
-        year: Number(vehicleData.year),
-        kilometers: vehicleData.kilometers,
-        color: vehicleData.color,
-        auctions: vehicleData.auctions,
-        images: vehicleData.images,
+        description: automobileData.description,
+        make: automobileData.make,
+        model: automobileData.model,
+        year: Number(automobileData.year),
+        kilometers: automobileData.kilometers,
+        color: automobileData.color,
+        autoType: automobileData.autoType,
+        fuelType: automobileData.fuelType,
+        offerType: automobileData.offerType,
+        salePrice: Number(automobileData?.salePrice),
+        user: automobileData.user,
       },
     })
     return result

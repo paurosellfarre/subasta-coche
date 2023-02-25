@@ -2,8 +2,8 @@
 
 //import prisma from "../../lib/prisma"
 
-import vehicle from "../../../../data/vehicle.json"
+import automobile from "../../../../data/automobile.json"
 
 export default async function handler() {
-  return vehicle
+  return automobile
 }

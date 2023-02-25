@@ -1,4 +1,4 @@
-export default function VehicleImages({ images }: any) {
+export default function AutomobileImages({ images }: any) {
   if (!images) return <></>
   return (
     <div className="sm:col-span-2 sm:border-r sm:border-gray-200 sm:pr-8 block">
