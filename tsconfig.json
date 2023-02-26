@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@utils/*": ["./utils/*"],
-      "@public/*": ["./public/*"]
+      "@public/*": ["./public/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": [
