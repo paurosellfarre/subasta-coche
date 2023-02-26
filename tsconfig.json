@@ -20,7 +20,9 @@
       }
     ],
     "paths": {
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@public/*": ["./public/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": [
