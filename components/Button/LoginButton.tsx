@@ -8,15 +8,14 @@ export default function Component() {
 
   if (data) {
     return (
-      <>
-        Signed in as {data?.user?.name} <br />
+      <div className="grid">
+        Signed in as {data?.user?.name}
         <button onClick={() => signOut()}>Sign out</button>
-      </>
+      </div>
     )
   } else {
     return (
       <>
-        Not signed in <br />
         <button onClick={() => signIn()}>Sign in</button>
       </>
     )
