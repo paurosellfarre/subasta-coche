@@ -1,14 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { CustomAlertI } from "@components/Alert/customAlert.interface"
 
 export default function CustomAlert({
-  props: { success, code, message, setShowAlert },
-}) {
+  showAlert,
+  success,
+  code,
+  message,
+  setAlertData,
+}: CustomAlertI) {
   return (
     <div
       id="alert-1"
-      className={` flex p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400`}
+      className={` flex p-4 mb-4 rounded-lg dark:bg-gray-800 ${
+        success
+          ? "bg-blue-50 text-blue-800 dark:text-blue-400"
+          : "bg-red-50 text-red-800 dark:text-red-400"
+      }`}
       role="alert"
     >
       <svg
@@ -25,22 +33,33 @@ export default function CustomAlert({
         ></path>
       </svg>
       <span className="sr-only">Info</span>
-      <div className="ml-3 text-sm font-medium">
-        A simple info alert with an{" "}
-        <a
-          href="#"
-          className="font-semibold underline hover:no-underline"
-        >
-          example link
-        </a>
-        . Give it a click if you like.
-      </div>
+      {success ? (
+        <div className="ml-3 text-sm font-medium">
+          Felicidades! Usuario creado correctamente
+        </div>
+      ) : (
+        <div className="ml-3 text-sm font-medium">
+          Revise que todos los campos esten completos
+        </div>
+      )}
       <button
         type="button"
-        className="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
+        className={`ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 inline-flex h-8 w-8 dark:bg-gray-800 dark:hover:bg-gray-700 p-1.5 ${
+          success
+            ? "bg-blue-50 text-blue-500 focus:ring-blue-400 hover:bg-blue-200 dark:text-blue-400"
+            : "bg-red-50 text-red-500 focus:ring-red-400 hover:bg-red-200 dark:text-red-400"
+        }`}
         data-dismiss-target="#alert-1"
         aria-label="Close"
-        onClick={() => setShowAlert(false)}
+        onClick={() =>
+          setAlertData({
+            showAlert: false,
+            success,
+            code,
+            message,
+            setAlertData,
+          })
+        }
       >
         <span className="sr-only">Close</span>
         <svg
