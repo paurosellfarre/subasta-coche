@@ -1,19 +1,28 @@
 "use client"
 
 import { LockClosedIcon } from "@heroicons/react/20/solid"
-import Image from "next/image"
-import { Prisma } from "@prisma/client"
 import { useState } from "react"
+
+//Prisma Interfaces
+import { Prisma } from "@prisma/client"
+
+//Nextjs
+import { useSearchParams, useRouter } from "next/navigation"
+import Image from "next/image"
 import Link from "next/link"
+
+//NextAuth
+import { signIn } from "next-auth/react"
 
 //Toast Alert
 import CustomAlert from "@components/Alert/CustomAlert"
 import { CustomAlertI } from "@components/Alert/customAlert.interface"
 
 export default function Register() {
-  const [isFetching, setIsFetching] = useState(false)
-  //Toast Alert
+  const router = useRouter()
+  const searchParams = useSearchParams()?.get("callbackUrl") || "/"
   const [alertData, setAlertData] = useState({} as CustomAlertI)
+  const [isFetching, setIsFetching] = useState(false)
   const [conditions, setConditions] = useState(true)
   const [formData, setFormData] = useState<Prisma.UserCreateInput>({
     name: "",
@@ -42,6 +51,16 @@ export default function Register() {
         message: res.statusText,
         setAlertData,
       })
+
+      //Route user to ?callbackUrl= url param
+      if (res.ok) {
+        signIn("credentials", {
+          email: formData.email,
+          password: formData.password,
+          callbackUrl: searchParams,
+        })
+        router.push(searchParams)
+      }
     })
 
     setIsFetching(false)
