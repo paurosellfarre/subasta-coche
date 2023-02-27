@@ -14,7 +14,6 @@ export default async function handler(userData: Prisma.UserCreateInput) {
     })
     return result
   } catch (err) {
-    console.log(err)
     return false
   }
 }
