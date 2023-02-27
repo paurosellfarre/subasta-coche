@@ -6,8 +6,14 @@ import { Prisma } from "@prisma/client"
 import { useState } from "react"
 import Link from "next/link"
 
+//Toast Alert
+import CustomAlert from "@components/Alert/CustomAlert"
+import { CustomAlertI } from "@components/Alert/customAlert.interface"
+
 export default function Register() {
   const [isFetching, setIsFetching] = useState(false)
+  //Toast Alert
+  const [alertData, setAlertData] = useState({} as CustomAlertI)
   const [conditions, setConditions] = useState(true)
   const [formData, setFormData] = useState<Prisma.UserCreateInput>({
     name: "",
@@ -27,6 +33,15 @@ export default function Register() {
     await fetch("/api/user", {
       method: "POST",
       body: JSON.stringify(formData),
+    }).then((res) => {
+      //Toast Alert
+      setAlertData({
+        showAlert: true,
+        success: res.ok,
+        code: res.status,
+        message: res.statusText,
+        setAlertData,
+      })
     })
 
     setIsFetching(false)
@@ -34,6 +49,10 @@ export default function Register() {
 
   return (
     <>
+      {
+        //Toast Alert
+        alertData.showAlert && <CustomAlert {...alertData} />
+      }
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
