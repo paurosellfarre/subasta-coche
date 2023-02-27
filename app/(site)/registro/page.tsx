@@ -5,9 +5,17 @@ import Image from "next/image"
 import { Prisma } from "@prisma/client"
 import { useState } from "react"
 import Link from "next/link"
+import CustomAlert from "@components/Alert/CustomAlert"
 
 export default function Register() {
   const [isFetching, setIsFetching] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertData, setAlertData] = useState({
+    success: true,
+    code: 0,
+    message: "",
+    setShowAlert: setShowAlert,
+  })
   const [conditions, setConditions] = useState(true)
   const [formData, setFormData] = useState<Prisma.UserCreateInput>({
     name: "",
@@ -27,6 +35,14 @@ export default function Register() {
     await fetch("/api/user", {
       method: "POST",
       body: JSON.stringify(formData),
+    }).then((res) => {
+      setShowAlert(true)
+      setAlertData({
+        success: res.ok,
+        code: res.status,
+        message: res.statusText,
+        setShowAlert: setShowAlert,
+      })
     })
 
     setIsFetching(false)
@@ -34,6 +50,7 @@ export default function Register() {
 
   return (
     <>
+      {showAlert && <CustomAlert props={alertData} />}
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
