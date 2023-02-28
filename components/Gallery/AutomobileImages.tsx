@@ -9,7 +9,7 @@ export default function AutomobileImages({ images }: any) {
         <Image
           className="object-cover h-52 sm:h-96 w-full rounded-lg"
           src={images[0]?.image || DefaultImage}
-          alt={images[0]?.alt}
+          alt={images[0]?.alt || "Default Image"}
         />
       </div>
       <div className="flex pt-5 justify-between">
