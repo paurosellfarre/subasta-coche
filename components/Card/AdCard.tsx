@@ -3,8 +3,6 @@ import Link from "next/link"
 import { Prisma } from "@prisma/client"
 import DefaultImage from "@public/No-image-found.jpg"
 
-// TODO: Images will be loaded from Postgres as Binary, so we need to convert it to an image
-
 export default function AdCard({
   automobile,
 }: {
@@ -17,7 +15,7 @@ export default function AdCard({
     >
       <div className="min-w-300 h-60 sm:h-44 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none">
         <Image
-          // @ts-ignore TODO: Images will be loaded from Postgres as Binary, so we need to convert it to an image
+          // @ts-ignore
           src={automobile.images[0]?.binaryFile || DefaultImage}
           alt={
             automobile.images[0]?.name ||
@@ -29,7 +27,7 @@ export default function AdCard({
         />
 
         <Image
-          // @ts-ignore TODO: Images will be loaded from Postgres as Binary, so we need to convert it to an image
+          // @ts-ignore
           src={automobile.images[0]?.binaryFile || DefaultImage}
           alt={
             automobile.images[0]?.name ||

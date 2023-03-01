@@ -1,5 +1,6 @@
 "use client"
 
+import UploadImages from "@components/Upload/UploadImages"
 import { Prisma } from "@prisma/client"
 import React, { useState } from "react"
 
@@ -18,8 +19,12 @@ export default function PublicarAnuncio() {
     salePrice: 0,
     user: {
       connect: {
+        //TODO: Get the user id from the session
         id: 1,
       },
+    },
+    images: {
+      create: [],
     },
   })
 
@@ -109,6 +114,11 @@ export default function PublicarAnuncio() {
           placeholder="Enter the car color"
         />
       </div>
+      <UploadImages
+        formData={formData}
+        setFormData={setFormData}
+      />
+
       <button
         type="submit"
         disabled={isFetching}

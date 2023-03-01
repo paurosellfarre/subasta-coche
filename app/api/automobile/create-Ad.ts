@@ -4,6 +4,14 @@ import { Prisma } from "@prisma/client"
 export default async function handler(
   automobileData: Prisma.AutomobileCreateInput
 ) {
+  //Delete automobileData.images.create where binaryFile is null
+  if (automobileData?.images) {
+    // @ts-ignore
+    automobileData.images.create = automobileData.images.create?.filter(
+      (image: any) => image.binaryFile !== null
+    )
+  }
+
   try {
     const result = await prisma.automobile.create({
       data: {
@@ -18,6 +26,7 @@ export default async function handler(
         offerType: automobileData.offerType,
         salePrice: Number(automobileData?.salePrice),
         user: automobileData.user,
+        images: automobileData.images,
       },
     })
     return result
