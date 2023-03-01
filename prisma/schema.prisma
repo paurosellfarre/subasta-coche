@@ -45,7 +45,7 @@ model Automobile {
 model Image {
   id         Int      @id @default(autoincrement())
   name       String
-  binaryFile Bytes
+  binaryFile String
   automobile    Automobile  @relation(fields: [automobileId], references: [id])
   automobileId  Int
   createdAt DateTime @default(now())
