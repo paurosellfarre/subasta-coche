@@ -51,8 +51,9 @@ export default function UploadImages({ setFormData, formData }: any) {
             //Show the images preview
             <div className="grid grid-cols-2 lg:grid-cols-5 mb-5 justify-around">
               {formData.images.create.map((image: any) => (
-                <div>
+                <div key={image.name}>
                   <button
+                    key={image.name}
                     className="absolute bg-red-500 text-white rounded-full w-5 h-5 flex justify-center items-center"
                     onClick={() => {
                       setFormData((prevFormData: typeof formData) => ({
