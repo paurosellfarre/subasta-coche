@@ -3,7 +3,10 @@
 import prisma from "@utils/prisma"
 import { Prisma } from "@prisma/client"
 
-export default async function handler(): Promise<
+export default async function handler(
+  skip?: number,
+  take?: number
+): Promise<
   Prisma.AutomobileGetPayload<{ include: { images: true; auctions: true } }>[]
 > {
   //find automobiles with images and auctions
@@ -12,6 +15,8 @@ export default async function handler(): Promise<
       images: true,
       auctions: true,
     },
+    ...(skip && { skip }),
+    ...(take && { take }),
   })
 
   return automobiles
