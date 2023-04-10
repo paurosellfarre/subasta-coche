@@ -43,7 +43,7 @@ export default function AutomobileAdsGrid({
         </div>
         <PaginationButtons
           currentPage={page}
-          route="/"
+          route="anuncios/"
           disableNextPage={ads.length < ADS_PER_PAGE}
         />
       </div>
