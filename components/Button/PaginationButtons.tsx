@@ -19,6 +19,7 @@ const PaginationButtons = ({
   const router = useRouter()
 
   const handleNextPage = () => {
+    console.log("handleNextPage")
     if (disableNextPage) return
     if (route) {
       return router.push(`${route}?page=${currentPage + 1}`)
