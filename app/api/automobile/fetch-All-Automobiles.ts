@@ -19,5 +19,7 @@ export default async function handler(
     ...(take && { take }),
   })
 
+  console.log(automobiles)
+
   return automobiles
 }
