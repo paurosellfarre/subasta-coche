@@ -19,7 +19,7 @@ const PaginationButtons = ({ currentPage, route }: PaginationButtonsProps) => {
           "bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
         }
       >
-        Siguiente
+        Atras
       </Link>
 
       <p className="mx-4 text-[14px] font-medium">Página {currentPage}</p>
