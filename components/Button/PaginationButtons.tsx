@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 interface PaginationButtonsProps {
   currentPage: number
@@ -9,59 +9,30 @@ interface PaginationButtonsProps {
   handlePrev?: () => void
   handleNext?: () => void
 }
-const PaginationButtons = ({
-  currentPage,
-  route,
-  disableNextPage,
-  handlePrev,
-  handleNext,
-}: PaginationButtonsProps) => {
-  const router = useRouter()
-
-  const handleNextPage = () => {
-    console.log("handleNextPage")
-    if (disableNextPage) return
-    if (route) {
-      return router.push(`${route}?page=${currentPage + 1}`)
-    }
-    if (handleNext) {
-      return handleNext()
-    }
-  }
-
-  const handlePrevPage = () => {
-    if (currentPage === 1) return
-    if (route) {
-      return router.push(`${route}?page=${currentPage - 1}`)
-    }
-    if (handlePrev) {
-      return handlePrev()
-    }
-  }
-
+const PaginationButtons = ({ currentPage, route }: PaginationButtonsProps) => {
   return (
     <div className="flex flex-row items-center justify-center">
-      <button
-        onClick={() => handlePrevPage()}
+      <Link
+        key="Atras"
+        href={`${route}?page=${currentPage - 1}`}
         className={
           "bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
         }
-        hidden={currentPage === 1}
       >
-        Atras
-      </button>
+        Siguiente
+      </Link>
 
       <p className="mx-4 text-[14px] font-medium">Página {currentPage}</p>
 
-      <button
-        onClick={() => handleNextPage()}
+      <Link
+        key="Siguiente"
+        href={`${route}?page=${currentPage + 1}`}
         className={
           "bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
         }
-        hidden={disableNextPage}
       >
         Siguiente
-      </button>
+      </Link>
     </div>
   )
 }
