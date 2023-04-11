@@ -1,5 +1,5 @@
-import AutomobileImages from "../../../../components/Gallery/AutomobileImages"
-import AutomobileTitle from "../../../../components/Title/AutomobileTitle"
+import AutomobileImages from "@components/Gallery/AutomobileImages"
+import AutomobileTitle from "@components/Title/AutomobileTitle"
 
 async function fetchAutomobile(id: string) {
   const automobile = await fetch(

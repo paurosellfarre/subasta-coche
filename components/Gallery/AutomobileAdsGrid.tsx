@@ -27,23 +27,17 @@ export default function AutomobileAdsGrid({
             </h2>
           ) : null}
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-3 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-            {ads.map(
-              (
-                automobile: Prisma.AutomobileGetPayload<{
-                  include: { images: true }
-                }>
-              ) => (
-                <AdCard
-                  key={automobile.id}
-                  automobile={automobile}
-                />
-              )
-            )}
+            {ads.map((automobile) => (
+              <AdCard
+                key={automobile.id}
+                automobile={automobile}
+              />
+            ))}
           </div>
         </div>
         <PaginationButtons
           currentPage={page}
-          route="anuncios/"
+          route="/anuncios"
           disableNextPage={ads.length < ADS_PER_PAGE}
         />
       </div>

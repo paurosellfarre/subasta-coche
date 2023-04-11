@@ -9,7 +9,7 @@ import { authOptions } from "../../pages/api/auth/[...nextauth]"
 
 const navigation = [
   { name: "Inicio", href: "/" },
-  { name: "Buscador", href: "/anuncio/1" },
+  { name: "Buscador", href: "/anuncios/1" },
   { name: "Soporte", href: "/contacto" },
 ]
 

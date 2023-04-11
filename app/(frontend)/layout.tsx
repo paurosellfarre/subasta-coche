@@ -1,9 +1,10 @@
-import "../globals.css"
+import "./globals.css"
 
 import AuthContext from "@components/Auth/AuthContext"
 import Header from "@components/Navbar/Header"
 
 import type { Metadata } from "next"
+import React from "react"
 
 export const metadata: Metadata = {
   title: "Subasta Tu Coche",

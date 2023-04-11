@@ -6,13 +6,13 @@ interface PageProps {
   }
 }
 
-export default async function Home(props: PageProps) {
+export default function Anuncios(props: PageProps) {
   const page = props.searchParams?.page
   const pageNum = typeof page === "string" ? parseInt(page) : 1
 
   return (
-    <main>
+    <>
       <AutomobileAdsGrid page={pageNum || 1} />
-    </main>
+    </>
   )
 }
