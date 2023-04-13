@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Prisma } from "@prisma/client"
 import DefaultImage from "@public/No-image-found.jpg"
+import makerLogo from "@utils/makerLogo"
 
 export default function AdCard({
   automobile,
@@ -16,14 +17,14 @@ export default function AdCard({
       <div className="min-w-300 h-60 sm:h-44 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none">
         <Image
           // @ts-ignore
-          src={automobile.images[0]?.binaryFile || DefaultImage}
+          src={makerLogo(automobile.make)}
           alt={
             automobile.images[0]?.name ||
             `${automobile.make} ${automobile.model} Image`
           }
           width={50}
           height={50}
-          className="absolute m-2"
+          className="absolute m-2 rounded-md bg-white/90"
         />
 
         <Image
@@ -41,7 +42,7 @@ export default function AdCard({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link href={`/anuncio/${automobile.id}`}>
+            <Link href={`/anuncios/${automobile.id}`}>
               <span
                 aria-hidden="true"
                 className="absolute inset-0"
