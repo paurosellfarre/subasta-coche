@@ -17,7 +17,7 @@ export default function AdCard({
       <div className="min-w-300 h-60 sm:h-44 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none">
         <Image
           // @ts-ignore
-          src={makerLogo(automobile.make)}
+          src={`/${makerLogo(automobile.make)}`}
           alt={
             automobile.images[0]?.name ||
             `${automobile.make} ${automobile.model} Image`

@@ -19,7 +19,7 @@ export default async function handler(
         make: automobileData.make,
         model: automobileData.model,
         year: Number(automobileData.year),
-        kilometers: automobileData.kilometers,
+        kilometers: Number(automobileData.kilometers),
         color: automobileData.color,
         autoType: automobileData.autoType,
         fuelType: automobileData.fuelType,
