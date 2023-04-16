@@ -11,6 +11,9 @@ export default async function handler(
 > {
   //find automobiles with images and auctions
   const automobiles = await prisma.automobile.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
     include: {
       images: true,
       auctions: true,
