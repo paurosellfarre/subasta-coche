@@ -21,10 +21,10 @@ export default function FeaturesGrid({
     <>
       <div className="grid grid-cols-4 pt-5 justify-between divide-x-2 text-center pb-5">
         <div>
-          <span>{make}</span>
+          <span>{salePrice} €</span>
         </div>
         <div>
-          <span>{model}</span>
+          <span>{fuelType}</span>
         </div>
         <div>
           <span>{kilometers} Km</span>
@@ -35,16 +35,16 @@ export default function FeaturesGrid({
       </div>
       <div className="grid grid-cols-4 justify-between divide-x-2 text-center">
         <div>
+          <span>{make}</span>
+        </div>
+        <div>
+          <span>{model}</span>
+        </div>
+        <div>
           <span>{color}</span>
         </div>
         <div>
-          <span>{fuelType}</span>
-        </div>
-        <div>
           <span>{autoType}</span>
-        </div>
-        <div>
-          <span>{salePrice}</span>
         </div>
       </div>
     </>
