@@ -4,10 +4,10 @@ const globalForPrisma = global as unknown as {
   prisma: PrismaClient | undefined
 }
 
-export const client =
+export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
     log: ["query"],
   })
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = client
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma
