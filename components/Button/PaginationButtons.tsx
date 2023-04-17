@@ -12,7 +12,7 @@ const PaginationButtons = ({
   disableNextPage,
 }: PaginationButtonsProps) => {
   return (
-    <div className="flex flex-row items-center justify-center">
+    <div className="flex flex-row items-center justify-center pb-5">
       {currentPage > 1 ? (
         <Link
           key="Atras"

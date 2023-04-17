@@ -1,4 +1,4 @@
-export const ADS_PER_PAGE = 3
+export const ADS_PER_PAGE = 6
 
 export const VEHICLE_TYPES = [
   "Coche",

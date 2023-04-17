@@ -53,7 +53,7 @@ export default function AdCard({
           <p className="text-xs text-gray-500">{automobile.color}</p>
         </div>
         <p className="text-sm font-medium text-gray-900">
-          {`${automobile.salePrice} $`}
+          {`${automobile.salePrice} €`}
         </p>
       </div>
       <div className="mt-4 grid grid-cols-4 divide-x-2 text-xs text-center text-gray-500">
