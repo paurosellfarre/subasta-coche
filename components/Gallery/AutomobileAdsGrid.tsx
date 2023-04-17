@@ -1,5 +1,4 @@
 import { use } from "react"
-import { Prisma } from "@prisma/client"
 
 import { ADS_PER_PAGE } from "../../constants"
 import AdCard from "@components/Card/AdCard"

@@ -11,10 +11,7 @@ async function fetchAutomobile(id: string): Promise<
   }>
 > {
   const automobile = await fetch(
-    `${process.env.PUBLIC_URL}/api/automobile/${id}`,
-    {
-      cache: "no-store",
-    }
+    `${process.env.PUBLIC_URL}/api/automobile/${id}`
   )
   return automobile.json()
 }
