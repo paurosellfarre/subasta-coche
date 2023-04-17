@@ -31,7 +31,7 @@ export default function MobileMenuButton({ navigation }: any) {
         </button>
       </div>
       {isNavExpanded ? (
-        <div className="sm:hidden absolute w-full top-14 bg-white">
+        <div className="sm:hidden absolute w-full top-14 bg-white z-50">
           <div className="space-y-1 px-2 pt-2 pb-3">
             {navigation.map((item: any) => (
               <Link
