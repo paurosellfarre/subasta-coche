@@ -10,13 +10,13 @@ export default function PublicarAnuncio() {
   const [errors, setErrors] = useState(false)
   const [formData, setFormData] = useState<Prisma.AutomobileCreateInput>({
     description: undefined,
-    make: "",
+    make: "Audi",
     model: "",
     year: 0,
     kilometers: 0,
-    color: "",
+    color: "Negro",
     autoType: "Coche",
-    fuelType: "",
+    fuelType: "Gasolina",
     offerType: undefined,
     salePrice: 0,
     user: {
