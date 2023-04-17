@@ -39,27 +39,31 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        <div className="mt-4 sm:col-span-2 sm:col-start-1 sm:pt-6 sm:pb-16 sm:pr-8">
+        <div className="mt-4 sm:col-span-2">
           {/* Features */}
-          <h2 className="text-xl font-bold text-gray-900 text-center">
-            Detalles Técnicos
-          </h2>
-          <FeaturesGrid
-            make={automobile.make}
-            model={automobile.model}
-            kilometers={automobile.kilometers}
-            year={automobile.year}
-            color={automobile.color}
-            fuelType={automobile.fuelType}
-            autoType={automobile.autoType}
-            salePrice={automobile.salePrice}
-          />
+          <div className="pt-5">
+            <h2 className="text-xl font-bold text-gray-900 text-center">
+              Detalles Técnicos
+            </h2>
+            <FeaturesGrid
+              make={automobile.make}
+              model={automobile.model}
+              kilometers={automobile.kilometers}
+              year={automobile.year}
+              color={automobile.color}
+              fuelType={automobile.fuelType}
+              autoType={automobile.autoType}
+              salePrice={automobile.salePrice}
+            />
+          </div>
           {/* Description */}
-          <div className="space-y-6 pt-5">
+          <div className="mt-4 pt-5">
             <h2 className="text-xl font-bold text-gray-900 text-center">
               Descripción
             </h2>
-            <p className="text-base text-gray-900">{automobile.description}</p>
+            <p className="ml-12 text-base text-gray-900">
+              {automobile.description}
+            </p>
           </div>
         </div>
       </div>

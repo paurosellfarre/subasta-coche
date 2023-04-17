@@ -33,7 +33,7 @@ export default function FeaturesGrid({
           <span>{year}</span>
         </div>
       </div>
-      <div className="grid grid-cols-4 justify-between divide-x-2 text-center pb-10">
+      <div className="grid grid-cols-4 justify-between divide-x-2 text-center">
         <div>
           <span>{color}</span>
         </div>
