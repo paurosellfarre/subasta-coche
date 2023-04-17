@@ -14,7 +14,7 @@ export default function AutomobileImages({ images }: any) {
           height={100}
         />
       </div>
-      <div className="flex pt-5 justify-between">
+      <div className="flex pt-5 justify-evenly">
         {images.slice(1, 6).map((image: any) => (
           <Image
             className="object-cover h-16 w-16 sm:h-20 sm:w-20 lg:h-28 lg:w-28 rounded-lg"
