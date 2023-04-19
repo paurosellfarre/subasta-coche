@@ -35,7 +35,7 @@ export default function CustomAlert({
       <span className="sr-only">Info</span>
       {success ? (
         <div className="ml-3 text-sm font-medium">
-          Felicidades! Usuario creado correctamente
+          Felicidades! Creado correctamente
         </div>
       ) : (
         <div className="ml-3 text-sm font-medium">
