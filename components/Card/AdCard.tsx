@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Prisma } from "@prisma/client"
 import DefaultImage from "@public/No-image-found.jpg"
 import makerLogo from "@utils/makerLogo"
+import Chip from "@components/Chip/Chip"
 
 export default function AdCard({
   automobile,
@@ -26,6 +27,10 @@ export default function AdCard({
           height={50}
           className="absolute m-2 rounded-md bg-white/90"
         />
+
+        <div className="absolute m-2 top-1 right-1">
+          <Chip text={automobile.offerType} />
+        </div>
 
         <Image
           // @ts-ignore
