@@ -8,14 +8,14 @@ export default async function handler(
 ): Promise<
   Prisma.AutomobileGetPayload<Prisma.AutomobileFindUniqueOrThrowArgs>
 > {
-  //find automobile with images and auctions
+  //find automobile with images and bids
   const automobile = await prisma.automobile.findUniqueOrThrow({
     where: {
       id,
     },
     include: {
       images: true,
-      auctions: true,
+      bids: true,
     },
   })
 
