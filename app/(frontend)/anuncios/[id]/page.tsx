@@ -2,6 +2,7 @@ import { Prisma } from "@prisma/client"
 import AutomobileImages from "@components/Gallery/AutomobileImages"
 import AutomobileTitle from "@components/Title/AutomobileTitle"
 import FeaturesGrid from "@components/Grid/FeaturesGrid"
+import ContactCard from "@components/Card/ContactCard"
 
 async function fetchAutomobile(id: string): Promise<
   Prisma.AutomobileGetPayload<{
@@ -28,7 +29,7 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
         <AutomobileImages images={automobile?.images} />
 
         {/* Auction Clock and Bidder */}
-        <div className="mt-4 sm:row-span-3 sm:mt-0">
+        <div className="mt-4 sm:mt-0">
           <p className="text-base text-gray-900">Auction Clock</p>
 
           <div className="mt-6">
@@ -62,6 +63,11 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
               {automobile.description}
             </p>
           </div>
+        </div>
+
+        {/* User Contact Info */}
+        <div className="mt-4 sm:mt-0 col-start-3">
+          <ContactCard id={Number(automobile.userId)} />
         </div>
       </div>
     </div>
