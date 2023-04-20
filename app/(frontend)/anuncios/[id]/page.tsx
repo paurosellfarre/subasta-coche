@@ -4,6 +4,7 @@ import AutomobileTitle from "@components/Title/AutomobileTitle"
 import FeaturesGrid from "@components/Grid/FeaturesGrid"
 import ContactCard from "@components/Card/ContactCard"
 import Countdown from "@components/Clock/Countdown"
+import BidForm from "@components/Form/BidForm"
 
 async function fetchAutomobile(id: string): Promise<
   Prisma.AutomobileGetPayload<{
@@ -39,9 +40,7 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
             end={automobile.auction_end}
           />
 
-          <div className="mt-6">
-            <p className="text-base text-gray-900">Auction Bidder</p>
-          </div>
+          <BidForm automobileId={automobile.id} />
         </div>
 
         <div className="mt-4 sm:col-span-2">
