@@ -29,10 +29,12 @@ export default function Countdown({
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const interval = setInterval(() => {
       calculateTimeLeft()
     }, 1000)
-  }, [timeLeft])
+
+    return () => clearInterval(interval)
+  })
 
   return (
     <div className="mt-4 flex items-center justify-center text-3xl text-center">
