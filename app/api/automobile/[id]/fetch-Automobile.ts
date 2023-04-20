@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { prisma } from "@utils/prisma"
 import { Prisma } from "@prisma/client"
 
@@ -15,7 +13,6 @@ export default async function handler(
     },
     include: {
       images: true,
-      bids: true,
     },
   })
 
