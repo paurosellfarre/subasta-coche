@@ -2,9 +2,8 @@ import { Prisma } from "@prisma/client"
 import AutomobileImages from "@components/Gallery/AutomobileImages"
 import AutomobileTitle from "@components/Title/AutomobileTitle"
 import FeaturesGrid from "@components/Grid/FeaturesGrid"
+import AuctionRightBar from "@components/Auction/AuctionRightBar"
 import ContactCard from "@components/Card/ContactCard"
-import Countdown from "@components/Clock/Countdown"
-import BidForm from "@components/Form/BidForm"
 
 async function fetchAutomobile(id: string): Promise<
   Prisma.AutomobileGetPayload<{
@@ -30,17 +29,15 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
         {/* Images Gallery */}
         <AutomobileImages images={automobile?.images} />
 
-        {/* Auction Clock and Bidder */}
         <div className="mt-4 sm:mt-0">
-          <h2 className="text-xl font-bold text-gray-900 text-center">
-            ⏰ Termina en
-          </h2>
-          <Countdown
-            start={automobile.auction_start}
-            end={automobile.auction_end}
-          />
-
-          <BidForm automobileId={automobile.id} />
+          {/* Auction Clock and Bidder */}
+          {automobile.offerType === "auction" && (
+            <AuctionRightBar
+              automobileId={automobile.id}
+              start={automobile.auction_start}
+              end={automobile.auction_end}
+            />
+          )}
         </div>
 
         <div className="mt-4 sm:col-span-2">
