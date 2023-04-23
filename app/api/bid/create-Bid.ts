@@ -22,8 +22,8 @@ export default async function handler(bidData: Prisma.BidCreateInput) {
     if (
       !auction_start ||
       !auction_end ||
-      now < auction_start ||
-      now > auction_end
+      now < new Date(auction_start) ||
+      now > new Date(auction_end)
     ) {
       return false
     }
