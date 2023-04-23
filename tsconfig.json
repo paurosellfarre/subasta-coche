@@ -24,7 +24,8 @@
       "@public/*": ["./public/*"],
       "@components/*": ["./components/*"],
       "@api/*": ["./app/api/*"]
-    }
+    },
+    "typeRoots": ["./types"]
   },
   "include": [
     "next-env.d.ts",

@@ -31,7 +31,6 @@ export default async function handler(
     })
     return result
   } catch (err) {
-    console.log(err)
     return false
   }
 }

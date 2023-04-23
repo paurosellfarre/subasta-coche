@@ -21,7 +21,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
-  automobile  Automobile[]
+  automobiles  Automobile[]
+  bids  Bid[]
 }
 
 model Automobile {
@@ -41,7 +42,9 @@ model Automobile {
   deletedAt DateTime?
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  auctions  Auction[]
+  bids  Bid[]
+  auction_start DateTime?
+  auction_end DateTime?
   images    Image[]
 }
 
@@ -56,17 +59,13 @@ model Image {
   deletedAt DateTime?
 }
 
-model Auction {
+model Bid {
   id        Int      @id @default(autoincrement())
-  title     String
-  startingPrice Int
-  currentPrice Int
-  reservePrice Int
-  address    String
+  amount    Int
   automobile   Automobile  @relation(fields: [automobileId], references: [id])
   automobileId Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  deletedAt DateTime?
 }
 

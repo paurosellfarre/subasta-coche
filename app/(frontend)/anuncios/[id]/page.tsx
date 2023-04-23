@@ -2,6 +2,7 @@ import { Prisma } from "@prisma/client"
 import AutomobileImages from "@components/Gallery/AutomobileImages"
 import AutomobileTitle from "@components/Title/AutomobileTitle"
 import FeaturesGrid from "@components/Grid/FeaturesGrid"
+import AuctionRightBar from "@components/Auction/AuctionRightBar"
 import ContactCard from "@components/Card/ContactCard"
 
 async function fetchAutomobile(id: string): Promise<
@@ -28,20 +29,22 @@ export default async function Anuncio({ params }: { params: { id: string } }) {
         {/* Images Gallery */}
         <AutomobileImages images={automobile?.images} />
 
-        {/* Auction Clock and Bidder */}
         <div className="mt-4 sm:mt-0">
-          <p className="text-base text-gray-900">Auction Clock</p>
-
-          <div className="mt-6">
-            <p className="text-base text-gray-900">Auction Bidder</p>
-          </div>
+          {/* Auction Clock and Bidder */}
+          {automobile.offerType === "auction" && (
+            <AuctionRightBar
+              automobileId={automobile.id}
+              start={automobile.auction_start}
+              end={automobile.auction_end}
+            />
+          )}
         </div>
 
         <div className="mt-4 sm:col-span-2">
           {/* Features */}
           <div className="pt-5">
             <h2 className="text-xl font-bold text-gray-900 text-center">
-              Detalles Técnicos
+              ⚙️ Detalles Técnicos
             </h2>
             <FeaturesGrid
               make={automobile.make}

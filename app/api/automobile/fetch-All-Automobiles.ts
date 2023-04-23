@@ -6,17 +6,14 @@ import { Prisma } from "@prisma/client"
 export default async function handler(
   skip?: number,
   take?: number
-): Promise<
-  Prisma.AutomobileGetPayload<{ include: { images: true; auctions: true } }>[]
-> {
-  //find automobiles with images and auctions
+): Promise<Prisma.AutomobileGetPayload<{ include: { images: true } }>[]> {
+  //find automobiles with images and bids
   const automobiles = await prisma.automobile.findMany({
     orderBy: {
       createdAt: "desc",
     },
     include: {
       images: true,
-      auctions: true,
     },
     ...(skip && { skip }),
     ...(take && { take }),

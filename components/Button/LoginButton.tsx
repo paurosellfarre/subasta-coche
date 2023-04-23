@@ -16,7 +16,12 @@ export default function LoginButton() {
   } else {
     return (
       <>
-        <button onClick={() => signIn()}>Sign in</button>
+        <button
+          className="bg-gray-700 text-white py-2 rounded text-sm font-medium text-center"
+          onClick={() => signIn()}
+        >
+          Acceder a tu cuenta
+        </button>
       </>
     )
   }
