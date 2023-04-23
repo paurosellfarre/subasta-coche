@@ -25,6 +25,12 @@ export default async function handler(
         fuelType: automobileData.fuelType,
         offerType: automobileData.offerType,
         salePrice: Number(automobileData?.salePrice),
+        auction_start:
+          automobileData.offerType === "auction" ? new Date() : null,
+        auction_end:
+          automobileData.offerType === "auction"
+            ? new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
+            : null,
         user: automobileData.user,
         images: automobileData.images,
       },

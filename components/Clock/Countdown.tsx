@@ -10,6 +10,7 @@ export default function Countdown({
   end?: Date | null
 }) {
   let [timeLeft, setTimeLeft] = useState({
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -21,6 +22,7 @@ export default function Countdown({
 
     if (difference > 0) {
       setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
@@ -38,6 +40,10 @@ export default function Countdown({
 
   return (
     <div className="mt-4 flex items-center justify-center text-3xl text-center">
+      <div className="w-20 text-yellow-500">
+        <div className="font-mono leading-none">{timeLeft.days}</div>
+        <div className="font-mono uppercase text-sm leading-none">Dias</div>
+      </div>
       <div className="w-20 text-yellow-500">
         <div className="font-mono leading-none">{timeLeft.hours}</div>
         <div className="font-mono uppercase text-sm leading-none">Horas</div>

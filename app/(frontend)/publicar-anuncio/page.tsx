@@ -304,7 +304,7 @@ export default function PublicarAnuncio() {
                 value="auction"
                 onChange={handleChange}
               />
-              <span className="ml-2">Subastar</span>
+              <span className="ml-2">Subastar (Activa durante 7 días)</span>
             </label>
           </div>
         </div>

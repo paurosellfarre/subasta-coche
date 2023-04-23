@@ -74,7 +74,7 @@ export default function Bid({
     getHighestBid()
     setIsBiddable(isTimeBetween(start, end))
 
-    const interval = setInterval(async () => {
+    const interval = setInterval(() => {
       //If auction is not active, stop polling
       if (!isBiddable) return
       //Call the function every 5 seconds to update the highest price
