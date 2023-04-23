@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 
 import { isTimeBetween } from "@utils/time"
+import LoginButton from "@components/Button/LoginButton"
 
 async function fetchHigherBid_ByAutomobileId(automobileId: number) {
   const bid = await fetch(`/api/bid/${automobileId}`)
@@ -31,10 +32,6 @@ export default function Bid({
   const [newBid, setNewBid] = useState(highestBid.amount + 100)
 
   async function getHighestBid() {
-    setIsBiddable(isTimeBetween(start, end))
-    //If auction is not active, stop polling
-    if (!isBiddable) return
-
     const bid = await fetchHigherBid_ByAutomobileId(automobileId)
     if (!bid) return
     setHighestBid({
@@ -75,24 +72,25 @@ export default function Bid({
   useEffect(() => {
     //Call the function to have the initial value without waiting 5 seconds
     getHighestBid()
+    setIsBiddable(isTimeBetween(start, end))
 
     const interval = setInterval(async () => {
+      //If auction is not active, stop polling
+      if (!isBiddable) return
       //Call the function every 5 seconds to update the highest price
       getHighestBid()
     }, 5000)
 
     return () => clearInterval(interval)
-  })
+  }, [])
 
   return (
     <form
-      className="grid mt-4 sm:mt-12 shadow overflow-hidden rounded-md"
+      className="grid mt-4 sm:mt-12 rounded-md"
       onSubmit={handleSubmit}
     >
       <div className="px-4 py-5 sm:px-6 text-center">
-        <h2 className="text-xl font-bold text-gray-900 text-center">
-          🤑 Pujar
-        </h2>
+        <h2 className="lg:text-xl font-bold text-gray-900">🤑 Pujar</h2>
         {data?.user?.id !== highestBid.userId && (
           <p className="mt-1 text-red-500 font-bold">
             {isBiddable ? "Cuidado! No estas ganando!" : "Has perdido!"}
@@ -106,18 +104,22 @@ export default function Bid({
         type="number"
         name="bid"
         id="bid"
-        className="pb-2 text-center font-bold text-2xl"
+        className="pb-2 text-center font-bold text-2xl sm:text-xl lg:text-2xl"
         min={highestBid.amount + 100}
-        value={newBid || highestBid.amount + 100}
+        value={newBid}
         onChange={(e) => setNewBid(Number(e.target.value))}
       />
-      <button
-        type="submit"
-        disabled={isFetching || !isBiddable}
-        className="bg-gray-700 text-white py-2 rounded-md text-sm font-medium"
-      >
-        {isBiddable ? "Pujar Ahora!" : "Puja no disponible"}
-      </button>
+      {data?.user?.id ? (
+        <button
+          type="submit"
+          disabled={isFetching || !isBiddable}
+          className="bg-gray-700 text-white py-2 rounded-md text-sm font-medium"
+        >
+          {isBiddable ? "Pujar Ahora!" : "Puja no disponible"}
+        </button>
+      ) : (
+        <LoginButton />
+      )}
     </form>
   )
 }

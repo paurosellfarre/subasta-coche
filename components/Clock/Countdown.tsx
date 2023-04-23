@@ -34,7 +34,7 @@ export default function Countdown({
     }, 1000)
 
     return () => clearInterval(interval)
-  })
+  }, [])
 
   return (
     <div className="mt-4 flex items-center justify-center text-3xl text-center">

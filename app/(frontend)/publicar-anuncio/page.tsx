@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Prisma } from "@prisma/client"
 import UploadImages from "@components/Upload/UploadImages"
 import { COLORS, FUEL_TYPES, MAKERS } from "../../../constants"
@@ -21,8 +21,8 @@ export default function PublicarAnuncio() {
     kilometers: 0,
     color: "Negro",
     autoType: "Coche",
-    fuelType: "Gasolina",
-    offerType: undefined,
+    fuelType: "",
+    offerType: "",
     salePrice: 0,
     user: {
       connect: {
@@ -34,15 +34,35 @@ export default function PublicarAnuncio() {
     },
   })
 
+  //Form Validator
+  useEffect(() => {
+    const validationArray: (keyof Prisma.AutomobileCreateInput)[] = [
+      "make",
+      "model",
+      "year",
+      "kilometers",
+      "color",
+      "autoType",
+      "fuelType",
+      "offerType",
+      "salePrice",
+    ]
+    let error = false
+    validationArray.forEach((element) => {
+      if (!formData[element] || formData[element] === "0") {
+        error = true
+      }
+    })
+    setErrors(error)
+  }, [formData])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
     if (!value || value === "0") {
       e.target.className = "border border-red-400 p-2 w-full rounded-md"
-      setErrors(true)
     } else {
       e.target.className = "border border-gray-400 p-2 w-full rounded-md"
-      setErrors(false)
     }
 
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
@@ -270,7 +290,6 @@ export default function PublicarAnuncio() {
                 name="offerType"
                 value="sale"
                 onChange={handleChange}
-                defaultChecked
               />
               <span className="ml-2">Vender</span>
             </label>
