@@ -1,4 +1,4 @@
-import AutomobileAdsGrid from "@components/Gallery/AutomobileAdsGrid"
+import AutomobileAdsGrid from "@components/Grid/AutomobileAdsGrid"
 
 interface PageProps {
   searchParams?: {
