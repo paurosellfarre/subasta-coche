@@ -30,6 +30,9 @@ export async function DELETE(
   context: { params: { id: string } }
 ) {
   const id = context.params.id
+
+  //TODO: Add authentication to check if the user is the owner of the ad
+
   if (!id) {
     return new Response(JSON.stringify({ error: "No ad id provided" }), {
       status: 403,
