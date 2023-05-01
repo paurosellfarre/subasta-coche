@@ -1,3 +1,6 @@
+import { getToken } from "next-auth/jwt"
+import { type NextRequest } from "next/server"
+
 import fetchAutomobile from "./fetch-Automobile"
 import deleteAutomobile from "./delete-Automobile"
 
@@ -26,20 +29,21 @@ export async function GET(
 }
 
 export async function DELETE(
-  request: Request,
+  request: NextRequest,
   context: { params: { id: string } }
 ) {
   const id = context.params.id
 
-  //TODO: Add authentication to check if the user is the owner of the ad
+  //Authentication to check if the user is the owner of the ad
+  const token = await getToken({ req: request })
 
-  if (!id) {
+  if (!id || !token) {
     return new Response(JSON.stringify({ error: "No ad id provided" }), {
       status: 403,
     })
   }
 
-  const response = await deleteAutomobile(Number(id))
+  const response = await deleteAutomobile(Number(id), Number(token.sub))
 
   if (!response) {
     return new Response(JSON.stringify({ error: "Error has occured" }), {

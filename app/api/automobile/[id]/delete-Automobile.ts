@@ -1,20 +1,24 @@
 import { prisma } from "@utils/prisma"
-import { Prisma } from "@prisma/client"
 
 export default async function handler(
-  id: number
-): Promise<
-  Prisma.AutomobileGetPayload<Prisma.AutomobileFindUniqueOrThrowArgs>
-> {
-  //Soft delete automobile by setting deletedAt to current date
-  const automobile = await prisma.automobile.update({
+  id: number,
+  userId: number
+) {
+  //Soft delete automobile by setting deletedAt to current date, 
+  //Use updateMany to allow for multiple where inputs.
+  //Always should return 1 as we filter by automobile id
+  
+  const automobile = await prisma.automobile.updateMany({
     where: {
-      id: id,
+      id: Number(id),
+      userId: Number(userId),
     },
     data: {
       deletedAt: new Date(),
     },
+
   })
 
-  return automobile
+  return automobile.count > 0
+
 }
