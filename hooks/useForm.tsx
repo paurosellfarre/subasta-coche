@@ -30,7 +30,7 @@ export const useForm = (fields: {
   //Handle change of form fields
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    console.log(e.target.className, value)
+
     if (!value || value === "0") {
       e.target.className = "border border-red-400 p-2 w-full rounded-md"
     } else {
