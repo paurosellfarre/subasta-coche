@@ -8,64 +8,29 @@ import { COLORS, FUEL_TYPES, MAKERS } from "../../../constants"
 //Toast Alert
 import CustomAlert from "@components/Alert/CustomAlert"
 import { CustomAlertI } from "@components/Alert/customAlert.interface"
+import { useForm } from "@hooks/useForm"
 
 export default function PublicarAnuncio() {
   const [isFetching, setIsFetching] = useState(false)
-  const [errors, setErrors] = useState(false)
   const [alertData, setAlertData] = useState({} as CustomAlertI)
-  const [formData, setFormData] = useState<Prisma.AutomobileCreateInput>({
-    description: undefined,
-    make: "Audi",
-    model: "",
-    year: 0,
-    kilometers: 0,
-    color: "Negro",
-    autoType: "Coche",
-    fuelType: "",
-    offerType: "",
-    salePrice: 0,
-    user: {
-      connect: {
-        id: 0,
-      },
-    },
-    images: {
-      create: [],
-    },
-  })
-
-  //Form Validator
-  useEffect(() => {
-    const validationArray: (keyof Prisma.AutomobileCreateInput)[] = [
-      "make",
-      "model",
-      "year",
-      "kilometers",
-      "color",
-      "autoType",
-      "fuelType",
-      "offerType",
-      "salePrice",
-    ]
-    let error = false
-    validationArray.forEach((element) => {
-      if (!formData[element] || formData[element] === "0") {
-        error = true
-      }
-    })
-    setErrors(error)
-  }, [formData])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-
-    if (!value || value === "0") {
-      e.target.className = "border border-red-400 p-2 w-full rounded-md"
-    } else {
-      e.target.className = "border border-gray-400 p-2 w-full rounded-md"
-    }
-
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
+  const { formData, setFormData, handleChange, error } = useForm({
+    description: { type: "string", required: true },
+    make: { type: "enum", enum: MAKERS, required: true },
+    model: { type: "string", minLength: 2, required: true },
+    year: { type: "number", required: true },
+    kilometers: { type: "number", required: true },
+    color: { type: "enum", enum: COLORS, required: true },
+    autoType: { type: "enum", enum: ["Coche"], required: true },
+    fuelType: { type: "enum", enum: FUEL_TYPES, required: true },
+    offerType: { type: "enum", enum: ["sale", "auction"], required: true },
+    salePrice: { type: "number", required: true },
+    user: { type: "object", properties: { connect: { id: 0 } } },
+    images: { type: "object", properties: { create: [] } },
+  }) as {
+    formData: Prisma.AutomobileCreateInput
+    setFormData: any
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    error: boolean
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -335,13 +300,13 @@ export default function PublicarAnuncio() {
 
         <button
           type="submit"
-          disabled={isFetching || errors}
+          disabled={isFetching || error}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded h-12"
         >
           Publicar
         </button>
 
-        {errors && (
+        {error && (
           <div>
             <span className="text-red-500 font-bold">
               Faltan campos por rellenar

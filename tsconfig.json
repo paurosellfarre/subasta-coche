@@ -23,7 +23,8 @@
       "@utils/*": ["./utils/*"],
       "@public/*": ["./public/*"],
       "@components/*": ["./components/*"],
-      "@api/*": ["./app/api/*"]
+      "@api/*": ["./app/api/*"],
+      "@hooks/*": ["./hooks/*"]
     },
     "typeRoots": ["./types"]
   },
