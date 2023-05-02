@@ -18,11 +18,8 @@ export default function AutomobileAdsGrid() {
         <div className="mx-auto max-w-2xl py-4 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="grid grid-cols-1 gap-y-10 gap-x-3 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
             {ads.map((automobile) => (
-              <div>
-                <AdCard
-                  key={automobile.id}
-                  automobile={automobile}
-                />
+              <div key={automobile.id}>
+                <AdCard automobile={automobile} />
                 <div className="flex justify-evenly mt-2">
                   <DeleteButton
                     href={`/automobile/${automobile.id}`}

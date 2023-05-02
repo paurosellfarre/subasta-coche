@@ -1,5 +1,7 @@
 import AdForm from "@components/Form/AdForm"
 
+//TODO: Fetch automobile data from the API and pass it to the AdForm component
+
 export default function EditarAnuncio() {
   return (
     <AdForm
