@@ -24,7 +24,8 @@
       "@public/*": ["./public/*"],
       "@components/*": ["./components/*"],
       "@api/*": ["./app/api/*"],
-      "@hooks/*": ["./hooks/*"]
+      "@hooks/*": ["./hooks/*"],
+      "@constants": ["./constants.ts"]
     },
     "typeRoots": ["./types"]
   },

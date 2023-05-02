@@ -4,14 +4,11 @@ import { Prisma } from "@prisma/client"
 import DefaultImage from "@public/No-image-found.jpg"
 import makerLogo from "@utils/makerLogo"
 import Chip from "@components/Chip/Chip"
-import DeleteButton from "@components/Button/DeleteButton"
 
 export default function AdCard({
   automobile,
-  isEditable = false,
 }: {
   automobile: Prisma.AutomobileGetPayload<{ include: { images: true } }>
-  isEditable?: boolean
 }) {
   return (
     <div>
@@ -80,21 +77,6 @@ export default function AdCard({
           </div>
         </div>
       </Link>
-      {isEditable && (
-        <div className="flex justify-evenly mt-2">
-          <DeleteButton
-            href={`/automobile/${automobile.id}`}
-            className="block bg-red-500 text-white px-2 py-2 rounded text-sm font-medium text-center"
-            text={`Eliminar ${automobile.make} ${automobile.model}`}
-          />
-          <Link
-            href={`/anuncios/editar/${automobile.id}`}
-            className="block bg-gray-600 text-white px-2 py-2 rounded text-sm font-medium text-center"
-          >
-            Editar {automobile.make} {automobile.model}
-          </Link>
-        </div>
-      )}
     </div>
   )
 }
