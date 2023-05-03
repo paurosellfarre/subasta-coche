@@ -34,7 +34,7 @@ export default function AdForm({
     user: { type: "object", properties: { connect: { id: 0 } } },
     images: { type: "object", properties: { create: [] } },
   }) as {
-    formData: Prisma.AutomobileCreateInput
+    formData: Prisma.AutomobileCreateInput & { id: number }
     setFormData: any
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     error: boolean
@@ -51,10 +51,13 @@ export default function AdForm({
     setIsFetching(true)
     e.preventDefault()
 
-    await fetch("/api/automobile", {
-      method,
-      body: JSON.stringify(formData),
-    }).then((res) => {
+    await fetch(
+      method === "POST" ? "/api/automobile" : `/api/automobile/${formData.id}`,
+      {
+        method,
+        body: JSON.stringify(formData),
+      }
+    ).then((res) => {
       //Toast Alert
       setAlertData({
         showAlert: true,

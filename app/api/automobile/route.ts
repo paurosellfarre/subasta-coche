@@ -1,4 +1,4 @@
-import createAd from "./create-Ad"
+import createAutomobile from "./create-Automobile"
 
 import { getToken } from "next-auth/jwt"
 import { type NextRequest } from "next/server"
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   }
   body.user.connect.id = Number(token.sub)
 
-  const response = await createAd(body)
+  const response = await createAutomobile(body)
 
   if (!response) {
     return new Response(JSON.stringify({ error: "Error has occured" }), {

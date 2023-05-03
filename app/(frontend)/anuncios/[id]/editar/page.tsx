@@ -25,12 +25,11 @@ export default function EditarAnuncio({ params }: { params: { id: string } }) {
         user: { connect: { id: automobile.userId } },
         images: {
           create:
-            //Return an array of objects with the Date as string
+            //Return only necessary data
             automobile.images.map((image) => {
               return {
-                ...image,
-                createdAt: image.createdAt.toString(),
-                updatedAt: image.updatedAt.toString(),
+                name: image.name,
+                binaryFile: image.binaryFile,
               }
             }),
         },
