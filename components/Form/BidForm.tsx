@@ -18,8 +18,8 @@ export default function Bid({
   end,
 }: {
   automobileId: number
-  start?: Date | null | undefined
-  end?: Date | null | undefined
+  start?: string | null | undefined //This is a string because we cannot pass a Date object from the server to the client
+  end?: string | null | undefined //This is a string because we cannot pass a Date object from the server to the client
 }) {
   const { data } = useSession()
   const [isFetching, setIsFetching] = useState(false)

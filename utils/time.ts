@@ -1,6 +1,6 @@
 function isTimeBetween(
-  start: Date | null | undefined,
-  end: Date | null | undefined
+  start: Date | null | string | undefined,
+  end: Date | null | string | undefined
 ) {
   const now = new Date()
   start = start ? new Date(start) : null

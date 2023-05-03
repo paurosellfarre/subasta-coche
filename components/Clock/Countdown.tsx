@@ -6,8 +6,8 @@ export default function Countdown({
   start,
   end,
 }: {
-  start?: Date | null
-  end?: Date | null
+  start?: string | null //This is a string because we cannot pass a Date object from the server to the client
+  end?: string | null //This is a string because we cannot pass a Date object from the server to the client
 }) {
   let [timeLeft, setTimeLeft] = useState({
     days: 0,

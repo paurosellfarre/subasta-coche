@@ -15,7 +15,7 @@ export default function AdForm({
   previousData,
   method,
 }: {
-  previousData?: any
+  previousData?: Prisma.AutomobileCreateInput & { id: number }
   method: "POST" | "PUT"
 }) {
   const [isFetching, setIsFetching] = useState(false)
@@ -83,8 +83,8 @@ export default function AdForm({
 
         <div className="flex justify-around">
           {/*
-  Select list with the constant make options
-*/}
+            Select list with the constant make options
+          */}
           <div className="mb-4 w-1/2 pr-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -109,8 +109,8 @@ export default function AdForm({
           </div>
 
           {/*
-  Input list with the model options
-*/}
+            Input list with the model options
+          */}
           <div className="mb-4 w-1/2 pl-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -131,8 +131,8 @@ export default function AdForm({
 
         <div className="flex justify-around">
           {/*
-  Input number with the kilometers
-  */}
+            Input number with the kilometers
+          */}
           <div className="mb-4 w-1/2 pr-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -152,8 +152,8 @@ export default function AdForm({
           </div>
 
           {/*
-  Input number with the fabrication year
-  */}
+            Input number with the fabrication year
+          */}
           <div className="mb-4 w-1/2 pl-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -175,8 +175,8 @@ export default function AdForm({
 
         <div className="flex justify-around">
           {/*
-  Select list with the constant color options
-*/}
+            Select list with the constant color options
+          */}
           <div className="mb-4 w-1/2 pr-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -201,8 +201,8 @@ export default function AdForm({
           </div>
 
           {/*
-  Radio button with the constant fuel options
-*/}
+            Radio button with the constant fuel options
+          */}
           <div className="mb-4 w-1/2 pl-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -220,6 +220,7 @@ export default function AdForm({
                   name="fuelType"
                   value={fuelType}
                   onChange={handleChange}
+                  checked={formData.fuelType === fuelType}
                 />
                 <span className="ml-2">{fuelType}</span>
               </label>
@@ -229,8 +230,8 @@ export default function AdForm({
 
         <div className="flex justify-around">
           {/*
-    Input number with the Sale Price
-  */}
+            Input number with the Sale Price
+          */}
           <div className="mb-4 w-1/2 pr-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -250,8 +251,8 @@ export default function AdForm({
           </div>
 
           {/*
-    Radiobutton with the constants offer types
-  */}
+            Radiobutton with the constants offer types
+          */}
           <div className="mb-4 w-1/2 pl-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -268,6 +269,7 @@ export default function AdForm({
                 name="offerType"
                 value="sale"
                 onChange={handleChange}
+                checked={formData.offerType === "sale"}
               />
               <span className="ml-2">Vender</span>
             </label>
@@ -281,6 +283,7 @@ export default function AdForm({
                 name="offerType"
                 value="auction"
                 onChange={handleChange}
+                checked={formData.offerType === "auction"}
               />
               <span className="ml-2">Subastar (Activa durante 7 días)</span>
             </label>
@@ -288,8 +291,8 @@ export default function AdForm({
         </div>
 
         {/*
-  Textarea with the description
-*/}
+          Textarea with the description
+        */}
         <div className="mb-6">
           <label
             className="block text-gray-700 font-bold mb-2"
