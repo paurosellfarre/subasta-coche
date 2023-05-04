@@ -9,7 +9,9 @@ export default function Chip({ text }: { text: string }) {
       } 
       `}
     >
-      <div className="leading-none">{text.toLocaleUpperCase()}</div>
+      <div className="leading-none">
+        {text === "sale" ? "VENTA" : "SUBASTA"}
+      </div>
     </div>
   )
 }
