@@ -1,25 +1,15 @@
-import { Prisma } from "@prisma/client"
+import { use } from "react"
+
 import AutomobileImages from "@components/Gallery/AutomobileImages"
 import AutomobileTitle from "@components/Title/AutomobileTitle"
 import FeaturesGrid from "@components/Grid/FeaturesGrid"
 import AuctionRightBar from "@components/Auction/AuctionRightBar"
 import ContactCard from "@components/Card/ContactCard"
 
-async function fetchAutomobile(id: string): Promise<
-  Prisma.AutomobileGetPayload<{
-    include: {
-      images: true
-    }
-  }>
-> {
-  const automobile = await fetch(
-    `${process.env.PUBLIC_URL}/api/automobile/${id}`
-  )
-  return automobile.json()
-}
+import fetchAutomobile from "@api/automobile/[id]/fetch-Automobile"
 
-export default async function Anuncio({ params }: { params: { id: string } }) {
-  const automobile = await fetchAutomobile(params.id)
+export default function Anuncio({ params }: { params: { id: string } }) {
+  const automobile = use(fetchAutomobile(Number(params.id)))
 
   return (
     <div>

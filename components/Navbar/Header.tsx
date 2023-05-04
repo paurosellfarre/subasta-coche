@@ -9,8 +9,8 @@ import { authOptions } from "../../pages/api/auth/[...nextauth]"
 
 const navigation = [
   { name: "Inicio", href: "/" },
-  { name: "Buscador", href: "/anuncios/1" },
-  { name: "Soporte", href: "/contacto" },
+  { name: "Registro", href: "/registro" },
+  { name: "Perfil", href: "/perfil" },
 ]
 
 export default function Header() {

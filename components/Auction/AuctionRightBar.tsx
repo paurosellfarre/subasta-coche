@@ -16,14 +16,14 @@ export default function AuctionRightBar({
         ⏰ Termina en
       </h2>
       <Countdown
-        start={start}
-        end={end}
+        start={start?.toISOString()}
+        end={end?.toISOString()}
       />
 
       <BidForm
         automobileId={automobileId}
-        start={start}
-        end={end}
+        start={start?.toISOString()}
+        end={end?.toISOString()}
       />
     </>
   )
