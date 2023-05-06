@@ -142,7 +142,7 @@ export default function Register() {
 
               <div className="text-sm">
                 <Link
-                  href="#"
+                  href={`/login?callbackUrl=${searchParams}`}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Tienes una cuenta? Inicia sesion

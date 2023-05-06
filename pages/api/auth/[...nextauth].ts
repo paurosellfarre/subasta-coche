@@ -9,7 +9,11 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-
+  pages: {
+    signIn: "/registro",
+    signOut: "/",
+    error: "/",
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({

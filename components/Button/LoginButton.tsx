@@ -9,18 +9,18 @@ export default function LoginButton() {
   if (data) {
     return (
       <div className="grid">
-        Signed in as {data?.user?.name}
-        <button onClick={() => signOut()}>Sign out</button>
+        {data?.user?.name}
+        <button onClick={() => signOut()}>Desconnectar</button>
       </div>
     )
   } else {
     return (
       <>
         <button
-          className="bg-gray-700 text-white py-2 rounded text-sm font-medium text-center"
+          className="bg-gray-700 text-white px-4 py-2 rounded text-sm font-medium text-center"
           onClick={() => signIn()}
         >
-          Acceder a tu cuenta
+          Acceso
         </button>
       </>
     )

@@ -38,9 +38,7 @@ export default function CustomAlert({
           Felicidades! Creado correctamente
         </div>
       ) : (
-        <div className="ml-3 text-sm font-medium">
-          Error: Revise que todos los campos esten completos
-        </div>
+        <div className="ml-3 text-sm font-medium">Error {message}</div>
       )}
       <button
         type="button"

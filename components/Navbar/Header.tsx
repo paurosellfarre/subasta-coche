@@ -1,11 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import MobileMenuButton from "./MobileMenuButton"
-import LoginButton from "../Button/LoginButton"
-
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../pages/api/auth/[...nextauth]"
+import MobileMenuButton from "@components/Navbar/MobileMenuButton"
+import LoginButton from "@components/Button/LoginButton"
 
 const navigation = [
   { name: "Inicio", href: "/" },
