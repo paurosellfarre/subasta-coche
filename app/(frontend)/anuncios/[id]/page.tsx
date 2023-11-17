@@ -19,16 +19,16 @@ export default function Anuncio({ params }: { params: { id: string } }) {
         {/* Images Gallery */}
         <AutomobileImages images={automobile?.images} />
 
-        <div className="mt-4 sm:mt-0">
-          {/* Auction Clock and Bidder */}
-          {automobile.offerType === "auction" && (
+        {/* Auction Clock and Bidder */}
+        {automobile.offerType === "auction" && (
+          <div className="mt-4 sm:mt-0">
             <AuctionRightBar
               automobileId={automobile.id}
               start={automobile.auction_start}
               end={automobile.auction_end}
             />
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="mt-4 sm:col-span-2">
           {/* Features */}
@@ -43,6 +43,11 @@ export default function Anuncio({ params }: { params: { id: string } }) {
               year={automobile.year}
               color={automobile.color}
               fuelType={automobile.fuelType}
+              transmission={automobile.transmission}
+              doors={automobile.doors}
+              seats={automobile.seats}
+              cc={automobile.cc}
+              cv={automobile.cv}
               autoType={automobile.autoType}
               salePrice={automobile.salePrice}
             />
@@ -59,7 +64,11 @@ export default function Anuncio({ params }: { params: { id: string } }) {
         </div>
 
         {/* User Contact Info */}
-        <div className="mt-4 sm:mt-0 col-start-3">
+        <div
+          className={`mt-4 sm:mt-0 ${
+            automobile.offerType !== "auction" && "row-start-1"
+          } `}
+        >
           <ContactCard id={Number(automobile.userId)} />
         </div>
       </div>

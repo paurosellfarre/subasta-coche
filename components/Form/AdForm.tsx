@@ -24,11 +24,16 @@ export default function AdForm({
     description: { type: "string", required: true },
     make: { type: "enum", enum: MAKERS, required: true },
     model: { type: "string", minLength: 2, required: true },
-    year: { type: "number", required: true },
-    kilometers: { type: "number", required: true },
+    year: { type: "number", required: true, default: 2023 },
+    kilometers: { type: "number" },
     color: { type: "enum", enum: COLORS, required: true },
     autoType: { type: "enum", enum: ["Coche"], required: true },
     fuelType: { type: "enum", enum: FUEL_TYPES, required: true },
+    transmission: { type: "enum", enum: ["Manual", "Automatico"] },
+    doors: { type: "number" },
+    seats: { type: "number" },
+    cc: { type: "number" },
+    cv: { type: "number" },
     offerType: { type: "enum", enum: ["sale", "auction"], required: true },
     salePrice: { type: "number", required: true },
     user: { type: "object", properties: { connect: { id: 0 } } },
@@ -232,6 +237,94 @@ export default function AdForm({
         </div>
 
         <div className="flex justify-around">
+          {/* CC input */}
+          <div className="mb-4 w-1/2 pr-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="cc"
+            >
+              CC
+            </label>
+            <input
+              name="cc"
+              type="number"
+              className="border border-gray-400 p-2 w-full rounded-md"
+              value={formData.cc}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* CV input */}
+          <div className="mb-4 w-1/2 pr-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="cv"
+            >
+              CV
+            </label>
+            <input
+              name="cv"
+              type="number"
+              className="border border-gray-400 p-2 w-full rounded-md"
+              value={formData.cv}
+              onChange={(e) => handleChange(e as any)}
+            />
+          </div>
+
+          {/* Transmission input */}
+          <div className="mb-4 w-1/2 pr-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="transmission"
+            >
+              Transmission
+            </label>
+            <select
+              name="transmission"
+              className="border border-gray-400 p-2 w-full rounded-md"
+              onChange={(e) => handleChange(e as any)}
+            >
+              <option value="Manual">Manual</option>
+              <option value="Automatico">Automatico</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex justify-around">
+          {/* Doors input */}
+          <div className="mb-4 w-1/2 pr-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="doors"
+            >
+              Doors
+            </label>
+            <input
+              name="doors"
+              type="number"
+              className="border border-gray-400 p-2 w-full rounded-md"
+              onChange={(e) => handleChange(e as any)}
+            />
+          </div>
+
+          {/* Seats input */}
+          <div className="mb-4 w-1/2 pr-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="seats"
+            >
+              Seats
+            </label>
+            <input
+              name="seats"
+              type="number"
+              className="border border-gray-400 p-2 w-full rounded-md"
+              onChange={(e) => handleChange(e as any)}
+            />
+          </div>
+        </div>
+
+        <div className="flex justify-around">
           {/*
             Input number with the Sale Price
           */}
@@ -288,7 +381,7 @@ export default function AdForm({
                 onChange={handleChange}
                 checked={formData.offerType === "auction"}
               />
-              <span className="ml-2">Subastar (Activa durante 7 días)</span>
+              <span className="ml-2">Subastar (7 días)</span>
             </label>
           </div>
         </div>

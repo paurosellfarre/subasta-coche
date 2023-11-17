@@ -23,6 +23,11 @@ export default async function handler(
         color: automobileData.color,
         autoType: automobileData.autoType,
         fuelType: automobileData.fuelType,
+        transmission: automobileData.transmission,
+        doors: Number(automobileData.doors),
+        seats: Number(automobileData.seats),
+        cc: Number(automobileData.cc),
+        cv: Number(automobileData.cv),
         offerType: automobileData.offerType,
         salePrice: Number(automobileData?.salePrice),
         auction_start:

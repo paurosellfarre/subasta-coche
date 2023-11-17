@@ -35,6 +35,11 @@ model Automobile {
   color     String
   autoType  String
   fuelType  String
+  transmission String
+  doors     Int
+  seats     Int
+  cc        Int
+  cv        Int
   offerType String  @default("sale")
   salePrice Int?
   createdAt DateTime @default(now())

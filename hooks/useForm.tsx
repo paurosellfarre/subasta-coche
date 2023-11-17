@@ -8,6 +8,7 @@ export const useForm = (fields: {
     minLength?: number
     maxLength?: number
     required?: boolean
+    default?: string | number
   }
 }) => {
   const [error, setError] = useState(false)
@@ -15,9 +16,9 @@ export const useForm = (fields: {
   const [formData, setFormData] = useState(
     Object.keys(fields).reduce((acc: any, key) => {
       if (fields[key].type === "number") {
-        acc[key] = 0
+        acc[key] = fields[key].default || 0
       } else if (fields[key].type === "string") {
-        acc[key] = ""
+        acc[key] = fields[key].default || ""
       } else if (fields[key].type === "enum") {
         acc[key] = fields[key].enum![0]
       } else if (fields[key].type === "object") {
